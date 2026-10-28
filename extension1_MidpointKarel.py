@@ -33,14 +33,16 @@ def move_diagonal_01():
         turn_right()
 
 def move_diagonal_02():
-    while front_is_clear():
-        if on_beeper():
-            pick_beeper()
-            move()
-            turn_left()
-        else:
-            move()
-            turn_right()
+    while not on_beeper():
+        move()
+        turn_left()
+        move()
+        turn_right()
+    pick_beeper()
+    turn_left()
+
+
+
 
 def move_east_and_check():
     while front_is_clear():
@@ -82,7 +84,11 @@ def main():
     while front_is_clear():
         move_east_and_check()
         move_west_and_check()  #facing east
-
+    turn_around()
+    move_diagonal_02()
+    while front_is_clear():
+        move()
+    put_beeper()
 
 
 
